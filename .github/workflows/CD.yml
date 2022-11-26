@@ -1,10 +1,9 @@
-name: ci
+name: CD
 
 on:
   push:
     branches:
       - "main"
-      - "FEAT_dockerize"
 
 jobs:
   build:
