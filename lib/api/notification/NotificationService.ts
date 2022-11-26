@@ -1,9 +1,10 @@
 import { NotificationHandler, NotificationRequest } from "types/notification";
+import * as dotenv from "dotenv";
+import Twilio from "twilio";
 
-const dotenv = require('dotenv').config()
-const twilio = require('twilio');
+dotenv.config()
 
-const client = new twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+const client = Twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 
 export class NotificationService implements NotificationHandler{
     async sendNotification(notification: NotificationRequest): Promise<void> {
