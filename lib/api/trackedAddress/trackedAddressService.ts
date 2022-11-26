@@ -1,3 +1,4 @@
+import { UUID } from "types/general";
 import { validateHash } from "../../../types/etherum";
 import { ReceiverType } from "../../../types/notification";
 import { TrackedAddress } from "../database/entities/trackedAddress";
@@ -31,11 +32,9 @@ export class TrackedAddressService {
         return await this.repository.find();
     }
 
-    async updateLastTimeStamp(address: string, lastTimeStamp: number){
-        const hash = validateHash(address);
-
+    async updateLastTimeStamp(id: UUID, lastTimeStamp: number){
         const trackedAddress = await this.repository.findOneBy({
-            address: hash 
+            id: id 
         });
 
         if(!trackedAddress){

@@ -35,7 +35,7 @@ export class ScannerService {
             }
         }
         trackedAddress.lastTimeStamp = Math.max(...transactions.map(t => t.timeStamp));
-        await this.trackedAddressService.updateLastTimeStamp(trackedAddress.address, trackedAddress.lastTimeStamp);
+        await this.trackedAddressService.updateLastTimeStamp(trackedAddress.id, trackedAddress.lastTimeStamp);
         return count;
     }
 }
