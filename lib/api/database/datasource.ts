@@ -24,7 +24,7 @@ export const AppDataSource = new DataSource({
 })
 
 
-var initializedDB = false;
+let initializedDB = false;
 export async function initializeDatabase(){
     if (initializedDB) {
         return;

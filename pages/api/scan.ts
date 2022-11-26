@@ -3,9 +3,13 @@ import { ScannerService } from "lib/api/scanner/scannerService";
 import { NextApiRequest, NextApiResponse } from "next";
 import { APIResponse } from "types/general";
 
+type ScanResponse = {
+    updated: number;
+}
+
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<APIResponse<any>>
+    res: NextApiResponse<APIResponse<ScanResponse>>
 ) {
 
     if(req.method !== 'GET'){
@@ -17,7 +21,9 @@ export default async function handler(
 
     const scanner = new ScannerService();
 
-    const transactions = await scanner.scan();
+    const nbUpdated = await scanner.scan();
 
-    return res.status(200).json(transactions);
+    return res.status(200).json({
+        updated: nbUpdated,
+    });
 }

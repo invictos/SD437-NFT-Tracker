@@ -31,7 +31,7 @@ export default async function handler(
     res.status(200).json(ta);
 }
 
-function validateBody(body: any): TrackedAdressRequest{
+function validateBody(body: {[key: string]: string}): TrackedAdressRequest{
     if(!body.address){
         throw new Error('Missing address');
     }

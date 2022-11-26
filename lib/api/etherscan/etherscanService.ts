@@ -27,7 +27,7 @@ export class EtherscanService {
         if(json.status !== '1'){
             throw new Error(json.message);
         }
-        return json.result.map((tx: any) => ({
+        return json.result.map((tx: {[key: string]: string}) => ({
             blockNumber: tx.blockNumber,
             timeStamp: parseInt(tx.timeStamp),
             hash: tx.hash,

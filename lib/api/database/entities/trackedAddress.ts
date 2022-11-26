@@ -17,7 +17,7 @@ export class TrackedAddress {
     lastTimeStamp: number;
 
     constructor(address: string) {
-        this.address = address as any;
+        this.address = address;
         this.lastTimeStamp = 0;
     }
 }

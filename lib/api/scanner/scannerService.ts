@@ -27,7 +27,7 @@ export class ScannerService {
 
     async processOne(trackedAddress: TrackedAddress){
         const transactions = await this.etherscanService.getTransactions(trackedAddress.address);
-        var count = 0;
+        let count = 0;
         for (const transaction of transactions) {
             if (transaction.timeStamp > trackedAddress.lastTimeStamp) {
                 await this.notificationService.sendNotification(createNotification(trackedAddress, transaction));
