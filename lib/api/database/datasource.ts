@@ -1,8 +1,12 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { Receiver } from "./entities/receiver";
+import { TrackedAddress } from "./entities/trackedAddress";
 import { loadDBInfo } from "./loadDBInfo";
 
 const entities = [
+    TrackedAddress,
+    Receiver,
 ];
 
 const databaseInfo = loadDBInfo();
