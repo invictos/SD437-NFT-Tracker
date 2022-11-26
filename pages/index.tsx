@@ -8,7 +8,7 @@ export default function Register() {
 
     const handleSubmit = () => {
         console.log(email, address);
-        fetch('http://localhost:3000/api/trackedAddress/', {
+        fetch('/mcgill/sd-nft/api/trackedAddress', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
