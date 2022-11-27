@@ -61,3 +61,5 @@ function createNotification(address: TrackedAddress, transaction: Transaction): 
         }
     }
 }
+
+export const test_createNotification = createNotification;
