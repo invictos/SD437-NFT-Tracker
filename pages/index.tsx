@@ -1,12 +1,29 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+const addressRegex = /^0x[a-fA-F0-9]{40}$/;
+const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // eslint-disable-line no-useless-escape
+const telRegex = /^(\+?1)?[2-9]\d{2}[2-9](?!11)\d{6}$/;
+
 export default function Register() {
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [type, setType] = useState('EMAIL');
 
     const handleSubmit = () => {
+        if (type === 'EMAIL' && !emailRegex.test(email)) {
+            toast.warn('Please enter a valid email address');
+            return;
+        }
+        if (type === 'SMS' && !telRegex.test(email)) {
+            toast.warn('Please enter a valid phone number');
+            return;
+        }
+        if (!addressRegex.test(address)) {
+            toast.warn('Please enter a valid Ethereum address');
+            return;
+        }
+
         console.log(email, address);
         fetch('/mcgill/sd-nft/api/trackedAddress', {
             method: 'POST',
