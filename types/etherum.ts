@@ -17,10 +17,3 @@ export interface TrackingEvent {
     to: string;
     nft: NFT;
 }
-
-export function validateHash(hash: string): string {
-    if(!hash.startsWith('0x')){
-        throw new Error('Hash must start with 0x');
-    }
-    return hash as string;
-}
