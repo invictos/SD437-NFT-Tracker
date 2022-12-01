@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const addressRegex = /^0x[a-fA-F0-9]{40}$/;
@@ -25,7 +25,7 @@ export default function Register() {
         }
 
         console.log(email, address);
-        fetch('/mcgill/sd-nft/api/trackedAddress', {
+        const apicall = fetch('/mcgill/sd-nft/api/trackedAddress', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,25 +35,32 @@ export default function Register() {
                 receiverType: type,
                 receiverPayload: email
             })
-        }).then(res => res.json()).then(data => {
-            console.log(data);
-            toast.success('Address added successfully');
-        }).catch(err => {
-            console.log(err);
-            toast.error('Error adding address');
+        });
+        
+        toast.promise(apicall, {
+            pending: 'Adding address...',
+            success: 'Address added successfully',
+            error: 'Error adding address'
         });
     };
 
+    useEffect(() => {
+        setEmail('');
+    }, [type]);
+
     return <>
         <div>
-            <h1>Register</h1>
+            <h1>Register an etherum address for tracking</h1>
+            <h3>Notification method</h3>
             <select onChange={e => setType(e.target.value)}>
                 <option value="EMAIL">Email</option>
                 <option value="SMS">SMS</option>
             </select>
-            <input type="text" placeholder={type} value={email} onChange={e => setEmail(e.target.value)} />
-            <input type="text" placeholder="address" value={address} onChange={e => setAddress(e.target.value)} />
-            <button onClick={handleSubmit}>Submit</button>
+            <input type={type == 'EMAIL' ? 'email' : 'tel'} placeholder={type == 'EMAIL' ? 'foo@mail.org' : '+15141234321'} value={email} onChange={e => setEmail(e.target.value)} />
+            <h3>Ethereum address</h3>
+            <input type="text" placeholder="address" value={address} onChange={e => setAddress(e.target.value)}/>
+            <br/>
+            <button onClick={handleSubmit}>Create alert</button>
         </div>
     </>
 }
