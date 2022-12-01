@@ -35,6 +35,10 @@ export default function Register() {
                 receiverType: type,
                 receiverPayload: email
             })
+        }).then(res => {
+            if (res.status !== 200){
+                throw null;
+            }
         });
         
         toast.promise(apicall, {
