@@ -72,3 +72,6 @@ function validateAddress(address: string) {
         throw new Error('Invalid address');
     }
 }
+
+export const test_validatePayload = validatePayload;
+export const test_validateAddress = validateAddress;
