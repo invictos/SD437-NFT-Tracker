@@ -10,7 +10,7 @@ export class NotificationService implements NotificationHandler{
 
     constructor() {
         this.twilioClient = Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
         sgMail.setClient(this.sgClient);
     }
 
