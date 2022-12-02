@@ -25,7 +25,7 @@ export class TrackedAddressService {
 
         const trackedAddress = new TrackedAddress(address);
         trackedAddress.receivers = [receiver];
-        trackedAddress.lastTimeStamp = Math.round(new Date().getTime());
+        trackedAddress.lastTimeStamp = Math.round(new Date().getTime()/1000);
 
         await this.repository.save(trackedAddress);
 
