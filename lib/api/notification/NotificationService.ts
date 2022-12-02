@@ -1,17 +1,19 @@
-import Twilio from "twilio";
 import sgMail from '@sendgrid/mail';
-import SendGrid from "@sendgrid/client";
+import Twilio from "twilio";
 import { NotificationHandler, NotificationRequest } from "types/notification";
 
 
 export class NotificationService implements NotificationHandler{
     twilioClient: Twilio.Twilio;
-    sgClient: SendGrid.Client;
+    sgMail: typeof sgMail;
 
     constructor() {
+        if(!process.env.SENDGRID_API_KEY || !process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN){
+            throw new Error('Missing environment variables');
+        }
         this.twilioClient = Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
-        sgMail.setClient(this.sgClient);
+        this.sgMail = sgMail;
+        this.sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     }
 
     async sendNotification(notification: NotificationRequest): Promise<void> {
@@ -37,7 +39,7 @@ export class NotificationService implements NotificationHandler{
     }
 
     async sendEmail(notification: NotificationRequest): Promise<void> {
-        sgMail
+        this.sgMail
         .send({
             to: notification.receivers[0].payload,
             from: 'nftaddresstracker@gmail.com',
