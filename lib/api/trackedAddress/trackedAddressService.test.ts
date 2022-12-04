@@ -1,5 +1,6 @@
 import { ReceiverType } from "types/notification";
 import { test_validateAddress, test_validatePayload } from "./trackedAddressService";
+import { expect } from '@jest/globals';
 
 it('throws on false email', () => {
     expect(() => test_validatePayload(ReceiverType.EMAIL, 'invalidemail')).toThrowError('Invalid email');

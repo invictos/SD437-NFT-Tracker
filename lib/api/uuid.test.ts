@@ -1,4 +1,5 @@
 import { randomUUID } from "./uuid";
+import { expect } from '@jest/globals';
 
 test('uuid has the correct format', () => {
     const uuid = randomUUID();
