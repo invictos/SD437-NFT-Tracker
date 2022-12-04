@@ -17,8 +17,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": ["cypress"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress/e2e/tracker.cy.js"],
   "exclude": ["node_modules"],
 }
