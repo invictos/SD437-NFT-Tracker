@@ -42,8 +42,8 @@ jobs:
           build: npm run build
           start: npm start
         env: 
-          INTEGRATION_DB_HOST: ${{ secrets.INTEGRATION_DB_HOST }}
-          INTEGRATION_DB_PORT: ${{ secrets.INTEGRATION_DB_PORT }}
-          INTEGRATION_DB_USERNAME: ${{ secrets.INTEGRATION_DB_USERNAME }}
-          INTEGRATION_DB_PASSWORD: ${{ secrets.INTEGRATION_DB_PASSWORD }}
-          INTEGRATION_DB_DATABASE: ${{ secrets.INTEGRATION_DB_DATABASE }}
+          DB_HOST: ${{ secrets.INTEGRATION_DB_HOST }}
+          DB_PORT: ${{ secrets.INTEGRATION_DB_PORT }}
+          DB_USERNAME: ${{ secrets.INTEGRATION_DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.INTEGRATION_DB_PASSWORD }}
+          DB_DATABASE: ${{ secrets.INTEGRATION_DB_DATABASE }}
