@@ -20,6 +20,6 @@
     "baseUrl": ".",
     "types": ["cypress"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress/e2e/tracker.cy.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
 }
