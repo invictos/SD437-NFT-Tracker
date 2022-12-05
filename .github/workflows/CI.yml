@@ -54,3 +54,16 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-east-1'
+      - name: Add comment with video link
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { GITHUB_SHA, AWS_CLOUDFRONT_URL } = process.env
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🧪 E2E tests results: [GITHUB_SHA](' + AWS_CLOUDFRONT_URL + GITHUB_SHA + '.mp4)'
+            })
