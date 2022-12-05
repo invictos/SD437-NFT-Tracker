@@ -47,3 +47,9 @@ jobs:
           DB_USERNAME: ${{ secrets.INTEGRATION_DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.INTEGRATION_DB_PASSWORD }}
           DB_DATABASE: ${{ secrets.INTEGRATION_DB_DATABASE }}
+      - name: Upload video to S3
+        run:
+          aws s3 cp /home/runner/work/SD-track-NFT-transactions/SD-track-NFT-transactions/cypress/videos/tracker.cy.tsx.mp4 s3://${{ secrets.AWS_S3_BUCKET_VIDEOS }}/$GITHUB_SHA.mp4
+        env: 
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
