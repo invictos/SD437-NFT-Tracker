@@ -5,7 +5,7 @@ describe("Address Tracking", () => {
   context("recipient tracking methods", () => {
     
     beforeEach(() => {
-      cy.visit("https://pro.ipv4.ovh/mcgill/sd-nft");
+      cy.visit("http://localhost:3000/mcgill/sd-nft");
     });
 
     it("successfully added address via email", () => {
@@ -102,4 +102,4 @@ describe("Address Tracking", () => {
   });
 });
 
-export {}
+export { };
