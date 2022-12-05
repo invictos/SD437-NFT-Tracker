@@ -65,5 +65,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🧪 E2E tests results: [GITHUB_SHA](' + AWS_CLOUDFRONT_URL + GITHUB_SHA + '.mp4)'
+              body: `🧪 E2E tests video: [${GITHUB_SHA}](${AWS_CLOUDFRONT_URL}${GITHUB_SHA}.mp4)`
             })
+        env: 
+          AWS_CLOUDFRONT_URL: ${{ secrets.AWS_CLOUDFRONT_URL }}
