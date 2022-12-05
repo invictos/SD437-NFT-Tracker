@@ -6,6 +6,7 @@ describe("Address Tracking", () => {
     
     beforeEach(() => {
       cy.visit("http://localhost:3000/mcgill/sd-nft");
+      cy.intercept("POST", "/mcgill/sd-nft/api/trackedAddress").as("trackedAddress");
     });
 
     it("successfully added address via email", () => {
@@ -14,6 +15,7 @@ describe("Address Tracking", () => {
       cy.get("[type='text']").type('0x268c9b61DB2703Bf2fDF53f11166B40f8051D4A1');
   
       cy.get('button').click();
+      cy.wait("@trackedAddress");
 
       cy.get('.Toastify').within(() => {
         cy.get('.Toastify__toast-container').within(() => {
@@ -32,6 +34,7 @@ describe("Address Tracking", () => {
       cy.get("[type='text']").type('0x268c9b61DB2703Bf2fDF53f11166B40f8051D4A1');
   
       cy.get('button').click();
+      cy.wait("@trackedAddress");
 
       cy.get('.Toastify').within(() => {
         cy.get('.Toastify__toast-container').within(() => {
