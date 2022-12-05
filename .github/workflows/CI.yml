@@ -31,3 +31,13 @@ jobs:
         run: npm install
       - name: Run jest
         run: npm run test -- --coverage
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v4.2.2
+        with:
+          build: npm run build
+          start: DB_HOST=${{ secrets.INTEGRATION_DB_HOST }} DB_PORT=${{ secrets.INTEGRATION_DB_PORT }} DB_USERNAME=${{ secrets.INTEGRATION_DB_USERNAME }} DB_PASSWORD=${{ secrets.INTEGRATION_DB_PASSWORD }} DB_DATABASE=${{ secrets.INTEGRATION_DB_DATABASE }} npm start
