@@ -54,7 +54,7 @@ export default function Register() {
 
     return <>
         <div>
-            <h1>Register an etherum address for tracking</h1>
+            <h1>Register an ethereum address for tracking</h1>
             <h3>Notification method</h3>
             <select onChange={e => setType(e.target.value)}>
                 <option value="EMAIL">Email</option>

@@ -1,4 +1,5 @@
 import { test_split, throttledPromises } from "./throttle";
+import { expect } from '@jest/globals';
 
 test('throttledPromises returns a coherent result', async () => {
     const sum = (obj: number[]): Promise<number> => {

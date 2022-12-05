@@ -2,6 +2,7 @@ import { ReceiverType } from "types/notification";
 import { TrackedAddress } from "../database/entities/trackedAddress";
 import { Transaction } from "../etherscan/etherscanService";
 import { test_createNotification } from "./scannerService";
+import { expect } from '@jest/globals';
 
 test('ScannerService createNotification', () => {
     const address: TrackedAddress = {
