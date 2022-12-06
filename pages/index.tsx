@@ -64,7 +64,7 @@ export default function Register() {
             <h3>Ethereum address</h3>
             <input type="text" placeholder="address" value={address} onChange={e => setAddress(e.target.value)}/>
             <br/>
-            <button onClick={handleSubmit}>Create alert</button>
+            <button onClick={handleSubmit}>Register Tracking</button>
         </div>
     </>
 }
