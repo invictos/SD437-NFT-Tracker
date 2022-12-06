@@ -9,7 +9,6 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [type, setType] = useState('EMAIL');
-    const [test, setTets] = useState('');
 
     const handleSubmit = () => {
         if (type === 'EMAIL' && !emailRegex.test(email)) {
